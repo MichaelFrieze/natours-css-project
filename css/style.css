@@ -6,3 +6,35 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* Lets set some overall properties */
+
+/*
+We are using the universal selector here to apply to all
+We are adding margin and padding to the page to make sure
+it is consistent across all browsers. Sometimes browsers
+add their own margin and padding to the page. 
+
+"box-sizing: border-box" is changing our box model. 
+This makes it so that the borders and the padding are no longer added
+to the total width or total height that we specify for a box.
+So, without this, any padding or borders are added to the
+height and the width of an element which isn't helpfulf for us
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 
+We are using body selector instead of the universal selector
+because we want to use the power of inheritance. 
+*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+}
