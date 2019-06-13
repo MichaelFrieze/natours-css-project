@@ -32,9 +32,18 @@ We are using body selector instead of the universal selector
 because we want to use the power of inheritance. 
 */
 body {
+  /* font is coming from google fonts that were imported */
   font-family: "Lato", sans-serif;
   font-weight: 400;
+  /* there is a better way to do font sizes */
   font-size: 16px;
+  /* line height is 1.7 times bigger than predefined */
   line-height: 1.7;
+  /* text color */
   color: #777;
+}
+
+.header {
+  /* 95% of the viewport height */
+  height: 95vh;
 }
