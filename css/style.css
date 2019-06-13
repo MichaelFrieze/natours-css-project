@@ -46,4 +46,17 @@ body {
 .header {
   /* 95% of the viewport height */
   height: 95vh;
+  /* the linear gradient comes first and then the image is behind that */
+  /* gradient starts on the left and goes to the right and bottom corner */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url(../img/hero.jpg);
+  /* cover does - whatever the width of the viewport, it will always try to fit the element inside the box*/
+  background-size: cover;
+  /* top does - whatever the viewport size, the top of image always stays at the top of the container*/
+  /* if you use center then the bottom and the top will get cut off */
+  background-position: top;
 }
