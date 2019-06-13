@@ -41,6 +41,8 @@ body {
   line-height: 1.7;
   /* text color */
   color: #777;
+  /* going to add some padding around the entire body */
+  padding: 30px;
 }
 
 .header {
@@ -59,4 +61,12 @@ body {
   /* top does - whatever the viewport size, the top of image always stays at the top of the container*/
   /* if you use center then the bottom and the top will get cut off */
   background-position: top;
+
+  /* we need to clip some of the bottom of the header off for a cool effect */
+  /* we can use clip-path which is a new CSS feature */
+  /* with polygon(), all we need to do is specify the 4 corners to make this effect */
+  /* It goes - top left, top right, bottom right, bottom left; it moves clockwise */
+  /* This is based on X and Y values */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  /* check out https://bennettfeely.com/clippy/ to get some polygon defaults */
 }
