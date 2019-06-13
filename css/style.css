@@ -7,66 +7,31 @@ Dark green: #28b485
 
 */
 
-/* Lets set some overall properties */
-
-/*
-We are using the universal selector here to apply to all
-We are adding margin and padding to the page to make sure
-it is consistent across all browsers. Sometimes browsers
-add their own margin and padding to the page. 
-
-"box-sizing: border-box" is changing our box model. 
-This makes it so that the borders and the padding are no longer added
-to the total width or total height that we specify for a box.
-So, without this, any padding or borders are added to the
-height and the width of an element which isn't helpfulf for us
-*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 
-We are using body selector instead of the universal selector
-because we want to use the power of inheritance. 
-*/
 body {
-  /* font is coming from google fonts that were imported */
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  /* there is a better way to do font sizes */
   font-size: 16px;
-  /* line height is 1.7 times bigger than predefined */
   line-height: 1.7;
-  /* text color */
   color: #777;
-  /* going to add some padding around the entire body */
   padding: 30px;
 }
 
 .header {
-  /* 95% of the viewport height */
   height: 95vh;
-  /* the linear gradient comes first and then the image is behind that */
-  /* gradient starts on the left and goes to the right and bottom corner */
   background-image: linear-gradient(
       to right bottom,
       rgba(126, 213, 111, 0.8),
       rgba(40, 180, 133, 0.8)
     ),
     url(../img/hero.jpg);
-  /* cover does - whatever the width of the viewport, it will always try to fit the element inside the box*/
   background-size: cover;
-  /* top does - whatever the viewport size, the top of image always stays at the top of the container*/
-  /* if you use center then the bottom and the top will get cut off */
   background-position: top;
 
-  /* we need to clip some of the bottom of the header off for a cool effect */
-  /* we can use clip-path which is a new CSS feature */
-  /* with polygon(), all we need to do is specify the 4 corners to make this effect */
-  /* It goes - top left, top right, bottom right, bottom left; it moves clockwise */
-  /* This is based on X and Y values */
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-  /* check out https://bennettfeely.com/clippy/ to get some polygon defaults */
 }
