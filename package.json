@@ -1,6 +1,6 @@
 {
   "name": "natours-css-project",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "Landing page for natours",
   "main": "index.js",
   "scripts": {
