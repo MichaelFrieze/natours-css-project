@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width;
-  background-color: #eee;
   margin: 0 auto;
 
   // The top row has a 0 pixel height
@@ -16,7 +15,6 @@
   @include clearfix;
 
   [class^="col-"] {
-    background-color: orangered;
     float: left;
 
     &:not(:last-child) {
