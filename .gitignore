@@ -2,7 +2,6 @@
 .DS_Store
 data/
 .idea
-package-lock.json
 localKeys.js
 
 # production
