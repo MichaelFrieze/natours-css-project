@@ -72,7 +72,7 @@
     left: 0;
     top: -0.4rem;
 
-    &:after {
+    &::after {
       content: "";
       display: block;
       height: 1.3rem;
@@ -88,11 +88,11 @@
     }
   }
 
-  &__radio-input:checked + &__radio-label &__radio-button:after {
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
     opacity: 1;
   }
 
-  &__radio-input:checked + &__radio-label {
+  &__radio-input:checked ~ &__radio-label {
     background: transparent;
   }
 }
