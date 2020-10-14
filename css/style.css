@@ -397,7 +397,7 @@ body {
   position: absolute;
   left: 0;
   top: -0.4rem; }
-  .form__radio-button::after {
+  .form__radio-button:after {
     content: "";
     display: block;
     height: 1.3rem;
