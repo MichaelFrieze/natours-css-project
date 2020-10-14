@@ -411,8 +411,11 @@ body {
     opacity: 0;
     transition: opacity 0.2s; }
 
-.form__radio-input:checked + .form__radio-label .form__radio-button::after {
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
   opacity: 1; }
+
+.form__radio-input:checked + .form__radio-label {
+  background: transparent; }
 
 .story {
   width: 75%;
