@@ -414,6 +414,80 @@ body {
 .form__radio-input:checked ~ .form__radio-button::after {
   opacity: 1; }
 
+/* 
+How I fixed the radio buttons:
+
+Just some extra stuff I learned after messing around with this particular lesson. Thanks to the awesome stuff I have gained thus far thanks to Jonas and this awesome course.
+
+You should also style the focus for your radio button.
+
+But to do so, you cannot have your radio set to
+
+display: none;
+
+But instead you need to set it to :
+
+&__radio-input {
+    // position: absolute;
+    opacity: 0;
+}
+ 
+// NOTE: if you want to keep it from throwing off your alignment, use position absolute.
+
+
+
+
+Because display: none; is not select-able via the tab key since it is not actually on the page.
+
+
+
+Then add this code to your scss
+
+&__radio-input:focus ~ &__radio-label &__radio-button::after {
+    opacity: 1;
+}
+or if you want to keep is snazzy like Jonas then you should do
+
+&__radio-input:checked ~ &__radio-label &__radio-button::after,
+&__radio-input:focus ~ &__radio-label &__radio-button::after{
+    opacity: 1;
+}
+
+That's what you need to target it.
+
+
+
+
+Also found out here that we are doing a few extra steps that in the current design we might not need.
+
+In index.html, we could wrap the radio button in the label, and remove the need for a id="" on the input and a for="" on the label.  so now the __radio-input and __radio-button would be siblings, Like so:
+
+<label class="form__radio-label">
+    Large tour group
+    <input type="radio" class="form__radio-input" name="size">
+    <span class="form__radio-button"></span>
+</label>
+Then in your _form.scss, you could shorten the specification with the following line instead.
+
+&__radio-input:checked ~ &__radio-button::after,  {
+    opacity: 1;
+}
+So really, both ways work perfectly, This one is a bit shorter, but could be infinite reasons to not do this for sure, especially if you want to move the label or the custom designed span element somewhere else on the page for some reason ( I can think of many applications for that ) using absolute positioning to a parent or something. With Jonas's method, I also found that you can move the span form__radio-button outside of the label for more positioning options ( Using absolute ) and it will still work as long as they share a parent div. Like so:
+
+<div class="form__radio-group">
+<input type="radio" class="form__radio-input" id="small" name="size">
+    <label for="small" class="form__radio-label">
+    Small tour group
+    </label>
+    <span class="form__radio-button"></span>
+</div>
+I am sure using this method, some really cool hacky things could be done with radial buttons or check boxes, for example: custom animated markers on a map, on a map you could cycle through icons that open up over cities by clicking the city name. etc... and so much more.
+
+
+I just wanted to dig into how this worked and WS3Schools showed that you can wrap the input inside the label and then you do not need to give it an ID, just thought I would share with others who may be interested in knowing as much as possible about how it works.
+
+Cheers ;-)
+*/
 .story {
   width: 75%;
   margin: 0 auto;
