@@ -45,25 +45,31 @@ The worst way to setup breakpoints is to use specific devices like iPhones and i
 */
 
 /* 
-keeping this as basic example
-@mixin respond-phone {
-  @media (max-width: 600px) {
-    @content;
-  }
-}
- */
-
-/* 
  $breakpoint argument choices:
-- phone
-- tab-port
-- tab-land
-- big-desktop
+- phone -> 600px
+- tab-port -> 900px
+- tab-land -> 1200px
+- big-desktop -> 1800px
  */
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
     @media (max-width: 600px) {
       @content;
-    } //600px
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 1800px) {
+      @content;
+    }
   }
 }

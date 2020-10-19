@@ -28,19 +28,11 @@ screen sizes but this is the most work.
 The worst way to setup breakpoints is to use specific devices like iPhones and iPads. Avoid this.
 */
 /* 
-keeping this as basic example
-@mixin respond-phone {
-  @media (max-width: 600px) {
-    @content;
-  }
-}
- */
-/* 
  $breakpoint argument choices:
-- phone
-- tab-port
-- tab-land
-- big-desktop
+- phone -> 600px
+- tab-port -> 900px
+- tab-land -> 1200px
+- big-desktop -> 1800px
  */
 @keyframes moveInLeft {
   0% {
@@ -82,6 +74,15 @@ html {
   @media (max-width: 600px) {
     html {
       font-size: 50%; } }
+  @media (max-width: 900px) {
+    html {
+      font-size: 60%; } }
+  @media (max-width: 1200px) {
+    html {
+      font-size: 70%; } }
+  @media (min-width: 1800px) {
+    html {
+      font-size: 80%; } }
 
 body {
   box-sizing: border-box; }
