@@ -31,17 +31,25 @@ html {
   That is determined by the default in the browser itself which is 16px.
   */
 
-  @include respond(tab-port) {
-    // width < 900?
-    font-size: 50%; //1 rem = 8px, 8/16 = 50%
-  }
-
+  // This comes first because both tab-land and tab-port get applied at same time
+  // this executes in order to determine a condition (checkout mixins to see how this applies)
   @include respond(tab-land) {
     // width < 1200?
     font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
   }
 
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(phone) {
+    // width < 600?
+    font-size: 35%; //1 rem = 8px, 8/16 = 50%
+  }
+
   @include respond(big-desktop) {
+    // width > 1800?
     font-size: 75%; //1rem = 12, 12/16
   }
 }
