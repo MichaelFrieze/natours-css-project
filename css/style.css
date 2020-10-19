@@ -26,6 +26,19 @@ setup breakpoints where it breaks (looks weird or out of place). Therefore, it w
 screen sizes but this is the most work. 
 
 The worst way to setup breakpoints is to use specific devices like iPhones and iPads. Avoid this.
+
+Also, We are not going to use pixels for our media queries because if someone changes the 
+default font size in the browser then the media queries would not be infected. This isn't good.
+So, we need to use a relative unit that will convert to pixel. 
+
+It's important to note that EM and REM are not effected by our root font-size settings. Which is: 62.5%
+1 em or 1 rem is just equal to the font-size that is coming from the browser. By default, this is 16px
+
+We are choosing to use EM for media queries instead of REM because REM fails to work as intended in some browsers. 
+To find out which EM size to use:
+- Let's assume 600px is the target as an example
+- 1em = 16px
+- divide: 600 / 16 = 37.5em
 */
 /* 
  $breakpoint argument choices:
@@ -33,6 +46,8 @@ The worst way to setup breakpoints is to use specific devices like iPhones and i
 - tab-port -> 900px
 - tab-land -> 1200px
 - big-desktop -> 1800px
+
+1em = 16px
  */
 @keyframes moveInLeft {
   0% {
@@ -71,18 +86,6 @@ The worst way to setup breakpoints is to use specific devices like iPhones and i
 
 html {
   font-size: 62.5%; }
-  @media (max-width: 600px) {
-    html {
-      font-size: 50%; } }
-  @media (max-width: 900px) {
-    html {
-      font-size: 60%; } }
-  @media (max-width: 1200px) {
-    html {
-      font-size: 70%; } }
-  @media (min-width: 1800px) {
-    html {
-      font-size: 80%; } }
 
 body {
   box-sizing: border-box; }
