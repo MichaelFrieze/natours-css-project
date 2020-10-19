@@ -20,8 +20,13 @@
 900 - 1200px:   Tablet landscape
 [1200 - 1800] is where our normal styles apply
 1800px + :      Big desktop
-ORDER: Base + typography > general layout + grid > page layout > components
-1em = 16px
+
+Quick Tip:
+You can show media queries in Chrome Dev Tools
+click on the top-right button and select media queries
+
+ORDER to write media queries: 
+Base + typography > general layout + grid > page layout > components
 
 These breakpoints were determined using the "GOOD" way. It's not the best but it's not the worst.
 The way these breakpoints were determined was by looking at all the most used devices on the internet 
