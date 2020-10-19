@@ -1,3 +1,37 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+
+These breakpoints were determined using the "GOOD" way. It's not the best but it's not the worst.
+The way these breakpoints were determined was by looking at all the most used devices on the internet 
+and try to group them together and pick the most logical breakpoints from that. Also, we aren't setting 
+breakpoints at a specific width but instead between similar device width.
+
+You can find stats for most used devices and screen size here (to use the GOOD way):
+https://gs.statcounter.com/screen-resolution-stats
+bar graph: https://gs.statcounter.com/screen-resolution-stats#monthly-201909-202009-bar
+USA bar graph: https://gs.statcounter.com/screen-resolution-stats/all/united-states-of-america#monthly-201909-202009-bar
+
+If you plot these on a number line going from 0px to 2000px you should be able to notice groups. 
+This is how the breakpoint arguments above were chosen. 
+
+The "BEST" way to setup breakpoints is to not focus on screen size of devices at all. 
+Instead, start mobile first or desktop first and slowly adjust the screen size until it breaks and then 
+setup breakpoints where it breaks (looks weird or out of place). Therefore, it will respond well to all 
+screen sizes but this is the most work. 
+
+The worst way to setup breakpoints is to use specific devices like iPhones and iPads. Avoid this.
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -35,6 +69,9 @@
 
 html {
   font-size: 62.5%; }
+  @media (max-width: 600px) {
+    html {
+      font-size: 50%; } }
 
 body {
   box-sizing: border-box; }
