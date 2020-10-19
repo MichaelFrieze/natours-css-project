@@ -1,3 +1,59 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+Quick Tip:
+You can show media queries in Chrome Dev Tools
+click on the top-right button and select media queries
+
+ORDER to write media queries: 
+Base + typography > general layout + grid > page layout > components
+
+These breakpoints were determined using the "GOOD" way. It's not the best but it's not the worst.
+The way these breakpoints were determined was by looking at all the most used devices on the internet 
+and try to group them together and pick the most logical breakpoints from that. Also, we aren't setting 
+breakpoints at a specific width but instead between similar device width.
+
+You can find stats for most used devices and screen size here (to use the GOOD way):
+https://gs.statcounter.com/screen-resolution-stats
+bar graph: https://gs.statcounter.com/screen-resolution-stats#monthly-201909-202009-bar
+USA bar graph: https://gs.statcounter.com/screen-resolution-stats/all/united-states-of-america#monthly-201909-202009-bar
+
+If you plot these on a number line going from 0px to 2000px you should be able to notice groups. 
+This is how the breakpoint arguments above were chosen. 
+
+The "BEST" way to setup breakpoints is to not focus on screen size of devices at all. 
+Instead, start mobile first or desktop first and slowly adjust the screen size until it breaks and then 
+setup breakpoints where it breaks (looks weird or out of place). Therefore, it will respond well to all 
+screen sizes but this is the most work. 
+
+The worst way to setup breakpoints is to use specific devices like iPhones and iPads. Avoid this.
+
+Also, We are not going to use pixels for our media queries because if someone changes the 
+default font size in the browser then the media queries would not be infected. This isn't good.
+So, we need to use a relative unit that will convert to pixel. 
+
+It's important to note that EM and REM are not effected by our root font-size settings. Which is: 62.5%
+1 em or 1 rem is just equal to the font-size that is coming from the browser. By default, this is 16px
+
+We are choosing to use EM for media queries instead of REM because REM fails to work as intended in some browsers. 
+To find out which EM size to use:
+- Let's assume 600px is the target as an example
+- 1em = 16px
+- divide: 600 / 16 = 37.5em
+*/
+/* 
+ $breakpoint argument choices:
+- phone -> 600px
+- tab-port -> 900px
+- tab-land -> 1200px
+- big-desktop -> 1800px
+
+1em = 16px
+ */
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -34,17 +90,49 @@
   box-sizing: inherit; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  /* 
+  To explain what is happening above:
+  - we are defining what 1 rem is by setting font-size in html {}
+  - In this case, we want default viewport width: 1 rem = 10px
+  - 16px is the default in browsers
+  - 1 rem = 10px; 10px / 16px = 62.5%
+
+  To explain further:
+  The main font-size above is what translates to 1rem
+  which means font-size defines the size of our entire layout
+
+  So, in responsive design, you could simply change the font-size
+  and all of the rem measurements will scale up or down based on font-size
+
+  The goal here is to change how to define what 1rem is based on our media queries
+  This should change most measurements of the layout simply by changing html {} font-size
+
+  Also, keep in mind that the breakpoints set in our mixins are not effected by this. 
+  That is determined by the default in the browser itself which is 16px.
+  */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  color: #777;
-  padding: 3rem; }
+  color: #777; }
 
 .heading-primary {
   color: #fff;
@@ -63,12 +151,19 @@ body {
     animation-iteration-count: 3;
     animation-delay: 2s;
     */ }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-family: 5rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.75rem;
     animation: moveInRight 1s ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: 0.5rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -80,6 +175,12 @@ body {
   color: transparent;
   letter-spacing: 2px;
   transition: all 0.2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -571,6 +672,13 @@ body {
   margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row::after {
     content: "";
     display: table;
@@ -579,6 +687,13 @@ body {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {

@@ -7,10 +7,53 @@
 }
 
 html {
-  // This defines what 1rem is
+  // This defines what 1rem
   font-size: 62.5%;
+
+  /* 
+  To explain what is happening above:
+  - we are defining what 1 rem is by setting font-size in html {}
+  - In this case, we want default viewport width: 1 rem = 10px
+  - 16px is the default in browsers
+  - 1 rem = 10px; 10px / 16px = 62.5%
+
+  To explain further:
+  The main font-size above is what translates to 1rem
+  which means font-size defines the size of our entire layout
+
+  So, in responsive design, you could simply change the font-size
+  and all of the rem measurements will scale up or down based on font-size
+
+  The goal here is to change how to define what 1rem is based on our media queries
+  This should change most measurements of the layout simply by changing html {} font-size
+
+  Also, keep in mind that the breakpoints set in our mixins are not effected by this. 
+  That is determined by the default in the browser itself which is 16px.
+  */
+
+  // This comes first because both tab-land and tab-port get applied at same time
+  // this executes in order to determine a condition (checkout mixins to see how this applies)
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    // width > 1800?
+    font-size: 75%; //1rem = 12, 12/16
+  }
 }
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }

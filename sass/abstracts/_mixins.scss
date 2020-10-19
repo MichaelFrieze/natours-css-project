@@ -12,3 +12,84 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+Quick Tip:
+You can show media queries in Chrome Dev Tools
+click on the top-right button and select media queries
+
+ORDER to write media queries: 
+Base + typography > general layout + grid > page layout > components
+
+These breakpoints were determined using the "GOOD" way. It's not the best but it's not the worst.
+The way these breakpoints were determined was by looking at all the most used devices on the internet 
+and try to group them together and pick the most logical breakpoints from that. Also, we aren't setting 
+breakpoints at a specific width but instead between similar device width.
+
+You can find stats for most used devices and screen size here (to use the GOOD way):
+https://gs.statcounter.com/screen-resolution-stats
+bar graph: https://gs.statcounter.com/screen-resolution-stats#monthly-201909-202009-bar
+USA bar graph: https://gs.statcounter.com/screen-resolution-stats/all/united-states-of-america#monthly-201909-202009-bar
+
+If you plot these on a number line going from 0px to 2000px you should be able to notice groups. 
+This is how the breakpoint arguments above were chosen. 
+
+The "BEST" way to setup breakpoints is to not focus on screen size of devices at all. 
+Instead, start mobile first or desktop first and slowly adjust the screen size until it breaks and then 
+setup breakpoints where it breaks (looks weird or out of place). Therefore, it will respond well to all 
+screen sizes but this is the most work. 
+
+The worst way to setup breakpoints is to use specific devices like iPhones and iPads. Avoid this.
+
+Also, We are not going to use pixels for our media queries because if someone changes the 
+default font size in the browser then the media queries would not be infected. This isn't good.
+So, we need to use a relative unit that will convert to pixel. 
+
+It's important to note that EM and REM are not effected by our root font-size settings. Which is: 62.5%
+1 em or 1 rem is just equal to the font-size that is coming from the browser. By default, this is 16px
+
+We are choosing to use EM for media queries instead of REM because REM fails to work as intended in some browsers. 
+To find out which EM size to use:
+- Let's assume 600px is the target as an example
+- 1em = 16px
+- divide: 600 / 16 = 37.5em
+*/
+
+/* 
+ $breakpoint argument choices:
+- phone -> 600px
+- tab-port -> 900px
+- tab-land -> 1200px
+- big-desktop -> 1800px
+
+1em = 16px
+ */
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
