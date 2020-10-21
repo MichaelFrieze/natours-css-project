@@ -59,6 +59,10 @@
       width: 50%;
       height: 25vh;
     }
+
+    @include respond(phone) {
+      display: none;
+    }
   }
 
   &__text {

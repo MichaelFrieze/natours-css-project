@@ -634,6 +634,9 @@ body {
         float: left;
         width: 50%;
         height: 25vh; } }
+    @media (max-width: 37.5em) {
+      .popup__img {
+        display: none; } }
   .popup__text {
     font-size: 1.4rem;
     margin-bottom: 4rem;
