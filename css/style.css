@@ -312,11 +312,7 @@ body {
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  height: 52rem;
-  /* 
-  hover: none allows us to make a media query that only works if 
-  the device does not have hover such as an iPad or some other touch device
- */ }
+  height: 52rem; }
   .card__side {
     height: 52rem;
     transition: all 0.8s ease;

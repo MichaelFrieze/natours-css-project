@@ -188,10 +188,6 @@
     font-weight: 100;
   }
 
-  /* 
-  hover: none allows us to make a media query that only works if 
-  the device does not have hover such as an iPad or some other touch device
- */
   @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     height: auto;
     border-radius: 3px;
