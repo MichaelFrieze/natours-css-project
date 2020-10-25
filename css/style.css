@@ -123,10 +123,10 @@ html {
 
 body {
   box-sizing: border-box;
-  padding: 3rem; }
-  @media only screen and (max-width: 56.25em) {
+  padding: 0; }
+  @media only screen and (min-width: 112.5em) {
     body {
-      padding: 0; } }
+      padding: 3rem; } }
 
 ::selection {
   background-color: #55c57a;
@@ -847,7 +847,7 @@ body {
     width: calc( 3 * ((100% - 3 * 6rem) / 4) + (2 * 6rem)); }
 
 .header {
-  height: 85vh;
+  height: 70vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
@@ -861,10 +861,15 @@ body {
   @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
     .header {
       background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
+  @media only screen and (max-width: 75em) {
+    .header {
+      height: 60vh; } }
+  @media only screen and (max-width: 56.25em) {
+    .header {
+      height: 55vh; } }
   @media only screen and (max-width: 37.5em) {
     .header {
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
+      height: 45vh; } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -873,10 +878,13 @@ body {
     height: 3.5rem; }
   .header__text-box {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center; }
+    @media only screen and (min-width: 112.5em) {
+      .header__text-box {
+        top: 40%; } }
 
 .navigation__checkbox {
   display: none; }

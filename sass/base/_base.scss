@@ -51,10 +51,10 @@ html {
 
 body {
   box-sizing: border-box;
-  padding: 3rem;
+  padding: 0;
 
-  @include respond(tab-port) {
-    padding: 0;
+  @include respond(big-desktop) {
+    padding: 3rem;
   }
 }
 
