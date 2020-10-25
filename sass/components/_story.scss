@@ -7,7 +7,7 @@
   padding: 6rem;
   padding-left: 9rem;
   font-size: $default-font-size;
-  transform: skewX(-12deg);
+  transform: skewX(0);
 
   @include respond(tab-port) {
     width: 100%;
@@ -15,15 +15,15 @@
     padding-left: 7rem;
   }
 
-  @include respond(phone) {
-    transform: skewX(0);
+  @include respond(big-desktop) {
+    transform: skewX(-12deg);
   }
 
   &__shape {
     width: 15rem;
     height: 15rem;
     float: left;
-    transform: translateX(-3rem) skewX(12deg);
+    transform: translateX(-3rem) skewX(0);
     position: relative;
     overflow: hidden;
     border-radius: 50%;
@@ -36,8 +36,8 @@
       border-radius: none;
     }
 
-    @include respond(phone) {
-      transform: translateX(-3rem) skewX(0);
+    @include respond(big-desktop) {
+      transform: translateX(-3rem) skewX(12deg);
     }
   }
 
@@ -49,10 +49,10 @@
   }
 
   &__text {
-    transform: skewX(12deg);
+    transform: skewX(0);
 
-    @include respond(phone) {
-      transform: skewX(0);
+    @include respond(big-desktop) {
+      transform: skewX(12deg);
     }
   }
 
