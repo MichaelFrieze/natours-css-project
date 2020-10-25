@@ -5,7 +5,9 @@
 }
 
 .section-features {
-  padding: 20rem 0;
+  padding-bottom: 20rem;
+  padding-top: 10rem;
+
   background-image: linear-gradient(
       to right bottom,
       rgba($color-primary-light, 0.8),
@@ -13,25 +15,29 @@
     ),
     url(../img/nat-4.jpg);
   background-size: cover;
-  transform: skewY(-7deg);
   margin-top: -11.5rem;
 
-  & > * {
-    transform: skewY(7deg);
+  @include respond(big-desktop) {
+    padding: 20rem 0;
+    transform: skewY(-7deg);
+
+    & > * {
+      transform: skewY(7deg);
+    }
   }
 
   @include respond(tab-port) {
-    padding: 10rem 0;
+    padding: 10rem 0 20rem;
   }
 }
 
 .section-tours {
   background-color: $color-grey-light-1;
-  padding: 25rem 0 15rem 0;
+  padding: 10rem 0 15rem 0;
   margin-top: -10rem;
 
   @include respond(tab-port) {
-    padding: 20rem 0 10rem 0;
+    padding: 10rem 0 10rem 0;
   }
 }
 
