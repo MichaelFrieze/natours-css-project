@@ -112,16 +112,16 @@
     }
   }
 
-  //FUNCTIONALITY
-  &__checkbox:checked ~ &__background {
-    transform: scale(80);
-  }
+  // //FUNCTIONALITY
+  // &__checkbox:checked ~ &__background {
+  //   transform: scale(80);
+  // }
 
-  &__checkbox:checked ~ &__nav {
-    opacity: 1;
-    width: 100%;
-    transform: translateX(0);
-  }
+  // &__checkbox:checked ~ &__nav {
+  //   opacity: 1;
+  //   width: 100%;
+  //   transform: translateX(0);
+  // }
 
   //ICON
   &__icon {

@@ -972,14 +972,6 @@ body {
   color: #55c57a;
   transform: translateX(1rem); }
 
-.navigation__checkbox:checked ~ .navigation__background {
-  transform: scale(80); }
-
-.navigation__checkbox:checked ~ .navigation__nav {
-  opacity: 1;
-  width: 100%;
-  transform: translateX(0); }
-
 .navigation__icon {
   position: relative;
   margin-top: 3.5rem; }
